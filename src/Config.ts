@@ -33,7 +33,6 @@ export interface Config {
   WEBHOOK: string
   REGEX_SERVER_PREFIX: string
   REGEX_MATCH_CHAT_MC: string
-  REGEX_DEATH_MESSAGE: string
   REGEX_IGNORED_CHAT: string
 
   SERVER_NAME: string

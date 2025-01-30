@@ -94,7 +94,6 @@ Details on the `config.json` file.
     "WEBHOOK": "/minecraft/hook", /* Web hook, where to send the log to */
     "REGEX_SERVER_PREFIX": "\\[Server thread/INFO\\]:", /* What the lines of the log should start with */
     "REGEX_MATCH_CHAT_MC": "^<([^>]*)> (.*)", /* What to match for chat (best to leave as default) */
-    "REGEX_DEATH_MESSAGE": "^[\w_]+ (died|...)", /* What to match for death messages (best leave this default too) */
     "REGEX_IGNORED_CHAT": "packets too frequently", /* What to ignore, you can put any regex for swear words for example and it will  be ignored */
 
     "SERVER_NAME": "Shulker", /* The username used when displaying any server information in chat, e.g., Server - Shulker : Server message here*/
