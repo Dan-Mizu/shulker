@@ -30,7 +30,7 @@
   "WEBHOOK": "/minecraft/hook",
   "REGEX_SERVER_PREFIX": "\\[Server thread/INFO\\]:",
   "REGEX_MATCH_CHAT_MC": "^<([^>]*)> (.*)",
-  "REGEX_IGNORED_CHAT": "(Rcon connection|packets too frequently|Loading properties|Default game type:|Starting Minecraft server on|Preparing level|For help, type \"help\"|Starting remote control listener)",
+  "REGEX_WHITELISTED_CONSOLE": "(Starting minecraft server version|Stopping the server|made the advancement|^[\\w_]+ died|left the game|joined the game)",
 
   "SERVER_NAME": "Shulker",
   "SERVER_IMAGE": "",
@@ -38,9 +38,5 @@
   "UUID_API_URL": "https://api.mojang.com/users/profiles/minecraft/%username%",
   "DEFAULT_PLAYER_HEAD": "c06f89064c8a49119c29ea1dbd1aab82",
 
-  "SHOW_SERVER_STATUS": false,
-  "SHOW_PLAYER_CONN_STAT": true,
-  "SHOW_PLAYER_ADVANCEMENT": true,
-  "SHOW_PLAYER_DEATH": true,
   "SHOW_PLAYER_ME": false
 }

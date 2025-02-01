@@ -106,89 +106,28 @@ class MinecraftHandler {
 
 		// fallback
 		else {
-			// check blacklist
-			const ignored = new RegExp(this.config.REGEX_IGNORED_CHAT);
-			if (ignored.test(data)) {
-				if (this.config.DEBUG) console.log("[DEBUG] Line ignored");
-				return null;
-			}
+			// // check blacklist
+			// const ignored = new RegExp(this.config.REGEX_IGNORED_CHAT);
+			// if (ignored.test(data)) {
+			// 	if (this.config.DEBUG) console.log("[DEBUG] Line ignored");
+			// 	return null;
+			// }
 
-			if (this.config.DEBUG) {
-				console.log("[DEBUG] A server message was sent");
-			}
+			// check whitelist
+			const whitelist = new RegExp(this.config.REGEX_WHITELISTED_CONSOLE);
+			if (whitelist.test(data)) {
+				if (this.config.DEBUG) {
+					console.log(`[DEBUG] A server message was sent: ${data}`);
+				}
 
-			return {
-				username: this.config.SERVER_NAME,
-				message: logLine,
-			};
+				return {
+					username: this.config.SERVER_NAME,
+					message: logLine,
+				};
+			}
 		}
 
-		// // connection status
-		// else if (
-		// 	this.config.SHOW_PLAYER_CONN_STAT &&
-		// 	(logLine.includes("left the game") ||
-		// 		logLine.includes("joined the game"))
-		// ) {
-		// 	// handle disconnection etc.
-		// 	if (this.config.DEBUG) {
-		// 		console.log(`[DEBUG] A player's connection status changed`);
-		// 	}
-
-		// 	return { username: serverUsername, message: logLine };
-		// }
-
-		// // server status
-		// else if (
-		// 	this.config.SHOW_SERVER_STATUS &&
-		// 	logLine.includes("Starting minecraft server")
-		// ) {
-		// 	if (this.config.DEBUG) {
-		// 		console.log("[DEBUG] Server has started");
-		// 	}
-		// 	return { username: serverUsername, message: "Server is online" };
-		// } else if (
-		// 	this.config.SHOW_SERVER_STATUS &&
-		// 	logLine.includes("Stopping the server")
-		// ) {
-		// 	if (this.config.DEBUG) {
-		// 		console.log("[DEBUG] Server has stopped");
-		// 	}
-		// 	return { username: serverUsername, message: "Server is offline" };
-		// }
-
-		// // advancement message
-		// else if (
-		// 	this.config.SHOW_PLAYER_ADVANCEMENT &&
-		// 	logLine.includes("made the advancement")
-		// ) {
-		// 	// handle advancements
-		// 	if (this.config.DEBUG) {
-		// 		console.log("[DEBUG] A player has made an advancement");
-		// 	}
-		// 	return {
-		// 		username: `${this.config.SERVER_NAME} - Server`,
-		// 		message: logLine,
-		// 	};
-		// }
-
-		// // death message
-		// else if (this.config.SHOW_PLAYER_DEATH) {
-		// 	const deathMessageRegex = new RegExp(
-		// 		this.config.REGEX_DEATH_MESSAGE ?? "^[\\w_]+ died"
-		// 	);
-		// 	const deathMessageMatch = logLine.match(deathMessageRegex);
-
-		// 	if (deathMessageMatch) {
-		// 		if (this.config.DEBUG) {
-		// 			console.log(
-		// 				`[DEBUG] A player died. Matched on "${deathMessageMatch[1]}"`
-		// 			);
-		// 		}
-		// 		return { username: serverUsername, message: logLine };
-		// 	}
-		// }
-
-		// return null;
+		return null;
 	}
 
 	private initWebServer(callback: Callback) {
@@ -255,10 +194,10 @@ class MinecraftHandler {
 
 				let grepMatch = ": <";
 				if (
-					this.config.SHOW_PLAYER_DEATH ||
-					this.config.SHOW_PLAYER_ME ||
-					this.config.SHOW_PLAYER_ADVANCEMENT ||
-					this.config.SHOW_PLAYER_CONN_STAT
+					// this.config.SHOW_PLAYER_DEATH ||
+					this.config.SHOW_PLAYER_ME
+					// || this.config.SHOW_PLAYER_ADVANCEMENT ||
+					// this.config.SHOW_PLAYER_CONN_STAT
 				) {
 					grepMatch = this.config.REGEX_SERVER_PREFIX;
 				}

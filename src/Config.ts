@@ -33,7 +33,8 @@ export interface Config {
   WEBHOOK: string
   REGEX_SERVER_PREFIX: string
   REGEX_MATCH_CHAT_MC: string
-  REGEX_IGNORED_CHAT: string
+  // REGEX_IGNORED_CHAT: string
+  REGEX_WHITELISTED_CONSOLE: string
 
   SERVER_NAME: string
   SERVER_IMAGE: string
@@ -41,9 +42,9 @@ export interface Config {
   UUID_API_URL: string
   DEFAULT_PLAYER_HEAD: string
 
-  SHOW_SERVER_STATUS: boolean
-  SHOW_PLAYER_CONN_STAT: boolean
-  SHOW_PLAYER_ADVANCEMENT: boolean
-  SHOW_PLAYER_DEATH: boolean
+  // SHOW_SERVER_STATUS: boolean
+  // SHOW_PLAYER_CONN_STAT: boolean
+  // SHOW_PLAYER_ADVANCEMENT: boolean
+  // SHOW_PLAYER_DEATH: boolean
   SHOW_PLAYER_ME: boolean
 }
