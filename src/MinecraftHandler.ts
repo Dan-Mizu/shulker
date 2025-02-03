@@ -73,7 +73,9 @@ class MinecraftHandler {
 				return null;
 			}
 
-			const username = fixMinecraftUsername(matches[1]);
+			const username = fixMinecraftUsername(
+				matches[1].split(" ").pop() as string
+			);
 			const message = matches[2];
 			if (this.config.DEBUG) {
 				console.log("[DEBUG] Username: " + matches[1]);
