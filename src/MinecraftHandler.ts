@@ -204,7 +204,7 @@ class MinecraftHandler {
 					grepMatch = this.config.REGEX_SERVER_PREFIX;
 				}
 				console.log(
-					`  \`tail -F ${mcPath} | grep --line-buffered "${grepMatch}" | while read x ; do echo -ne $x | curl -X POST -d @- http://${url}:${port}${this.config.WEBHOOK} ; done\``
+					`  \`tail -F ${mcPath} | grep -P --line-buffered "${grepMatch}" | while IFS= read -r x; do printf '%s\\n' "$x" | curl -X POST -d @- http://${url}:${port}${this.config.WEBHOOK} ; done\``
 				);
 				if (grepMatch !== ": <") {
 					console.log(
